@@ -21,8 +21,8 @@ import com.huilong.zhang.mobilesafe117.dao.AddressDao;
 public class AddressService extends Service {
     private static final String TAG = "AddressService";
     private WindowManager mWM;
-    private TextView view;
-    private OutCallReceiver receiver;
+    private View view;
+    private OutCallReceiver receiverone;
 
     public AddressService() {
     }
@@ -42,7 +42,7 @@ public class AddressService extends Service {
         mylisten = new Mylisten();
         tm.listen(mylisten,PhoneStateListener.LISTEN_CALL_STATE);
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
-        registerReceiver(receiver,intentFilter);
+        registerReceiver(receiverone,intentFilter);
     }
     class Mylisten extends PhoneStateListener {
         @Override
@@ -50,12 +50,18 @@ public class AddressService extends Service {
             switch (state) {
                 case TelephonyManager.CALL_STATE_RINGING:
                     String address = AddressDao.getAddress(incomingNumber);
-                    Log.v(TAG,"number is " + incomingNumber + " address is " +address);
+                    Log.v(TAG,"incomingNumber is " + incomingNumber + " address is " +address);
                     showToast(address);
 
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     Log.v(TAG,"zhaiji");
+                    break;
+                case TelephonyManager.CALL_STATE_IDLE:   //电话闲置状态
+                     if(mWM!=null && view !=null) {
+                         mWM.removeView(view);
+                     }
+                     view = null;
                     break;
                 default:
                     Log.v(TAG,"no");
@@ -68,7 +74,7 @@ public class AddressService extends Service {
     @Override
     public void onDestroy() {
         tm.listen(mylisten,PhoneStateListener.LISTEN_NONE);
-        unregisterReceiver(receiver);
+        unregisterReceiver(receiverone);
         super.onDestroy();
     }
 
@@ -88,11 +94,11 @@ public class AddressService extends Service {
         params.type = WindowManager.LayoutParams.TYPE_TOAST;
         params.setTitle("Toast");
 
-        view = new TextView(this);
-        view.setText(text);
-        view.setTextColor(Color.RED);
-        mWM.addView(view,params);
-        //view = View.inflate(this, R.layout.toast_address, null);
+//        view = new TextView(this);
+//        view.setText(text);
+//        view.setTextColor(Color.RED);
+//        mWM.addView(view,params);
+        view = View.inflate(this, R.layout.toast_address, null);
 
 //        int[] bgs = new int[] { R.drawable.call_locate_white,
 //                R.drawable.call_locate_orange, R.drawable.call_locate_blue,
@@ -101,12 +107,14 @@ public class AddressService extends Service {
 //
 //        view.setBackgroundResource(bgs[style]);// 根据存储的样式更新背景
 //
-//        TextView tvText = (TextView) view.findViewById(R.id.tv_number);
-//        tvText.setText(text);
-//
-//        mWM.addView(view, params);// 将view添加在屏幕上(Window)
+        TextView tvText = (TextView) view.findViewById(R.id.tv_number);
+        tvText.setText(text);
+        mWM.addView(view, params);// 将view添加在屏幕上(Window)
     }
 
+    /**
+     * ？存在问题，此广播手机无法接受
+     */
     class OutCallReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
