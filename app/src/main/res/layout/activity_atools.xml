@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.huilong.zhang.mobilesafe117.View.AToolsActivity">
+
+    <TextView
+        android:text="电话归属地查询"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:onClick="numberAddressQuery"/>
+
+</LinearLayout>

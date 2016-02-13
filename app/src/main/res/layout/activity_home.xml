@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_gongneng"
+        android:text="功能列表 "
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:background="#edffc7"
+        android:gravity="center"
+        android:textSize="22sp" />
+    <com.huilong.zhang.mobilesafe117.View.FocusedTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="手机卫士好保平安-手机卫士好保平安-手机卫士好保平安手机卫士好-保平安"
+        android:ellipsize="marquee"
+        android:singleLine="true" />
+    <GridView
+        android:layout_width="wrap_content"
+        android:verticalSpacing="20dp"
+        android:id="@+id/gridview"
+        android:layout_height="match_parent"
+        android:numColumns="3">
+    </GridView>
+
+</LinearLayout>

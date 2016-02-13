@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.huilong.zhang.mobilesafe117.View.Setup1Activity">
+
+    <TextView
+        android:id="@+id/tent_set"
+        android:text="手机防盗 "
+        style="@style/TitleSytle" />
+
+    <TextView
+        style="@style/ContentSytle"
+        android:text="您的手机防盗卫士:"
+        />
+
+    <TextView
+        style="@style/ContentSytle"
+        android:gravity="center"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="SIM卡变更报警"
+        />
+
+    <TextView
+        style="@style/ContentSytle"
+        android:gravity="center"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="GPS追踪"
+        />
+    <TextView
+        style="@style/ContentSytle"
+        android:gravity="center"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程销毁数据"
+        />
+    <TextView
+        style="@style/ContentSytle"
+        android:gravity="center"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程锁屏"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_audio_online"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/setup1"/>
+
+        <Button
+            style="@style/NextStyle" />
+    </RelativeLayout>
+
+</LinearLayout>

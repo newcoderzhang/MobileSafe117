@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidqian="http://schemas.android.com/apk/res/com.huilong.zhang.mobilesafe117"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tent_set"
+        android:text="设置 "
+        style="@style/TitleSytle" />
+
+
+    <com.huilong.zhang.mobilesafe117.View.SettingItmeView
+        android:id="@+id/myview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        androidqian:titlezhang="自动更新设置"
+        androidqian:desc_on="自动更新开启1"
+        androidqian:desc_off="自动更新关闭1">
+    </com.huilong.zhang.mobilesafe117.View.SettingItmeView>
+
+
+    <com.huilong.zhang.mobilesafe117.View.SettingItmeView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        androidqian:titlezhang="来电归属地设置"
+        androidqian:desc_on="归属地开启"
+        androidqian:desc_off="归属地关闭">
+    </com.huilong.zhang.mobilesafe117.View.SettingItmeView>
+</LinearLayout>

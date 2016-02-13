@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:androidqian="http://schemas.android.com/apk/res/com.huilong.zhang.mobilesafe117"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.huilong.zhang.mobilesafe117.View.Setup1Activity">
+
+    <TextView
+        android:id="@+id/tent_set"
+        android:text="恭喜您设置完成"
+        style="@style/TitleSytle" />
+    <CheckBox
+        android:id="@+id/checkbo_setup4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="防盗保护没有开启"/>
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+    </LinearLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/phone"/>
+        <Button
+            style="@style/PreviousStyle" />
+
+        <Button
+            style="@style/NextStyle"
+            android:text="设置完成"/>
+    </RelativeLayout>
+
+</LinearLayout>
+

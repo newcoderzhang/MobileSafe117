@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:padding="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title1"
+        android:text="自动更新设置"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        />
+
+    <CheckBox
+        android:id="@+id/mycheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="false"
+        android:focusableInTouchMode="false" />
+
+    <TextView
+        android:id="@+id/text_tv111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#9480ff"
+        android:layout_below="@+id/tv_title1"
+        android:textSize="19sp"
+        android:text="自动更新已经开启"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black"
+        android:layout_alignParentBottom="true"/>
+
+
+
+</RelativeLayout>

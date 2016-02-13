@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MobileSafe117</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_seting">SetingActivity</string>
+    <string name="title_activity_lost_find">LostFindActivity</string>
+    <string name="title_activity_setup1">Setup1Activity</string>
+    <string name="title_activity_setup2">Setup2Activity</string>
+    <string name="title_activity_setup3">Setup3Activity</string>
+    <string name="title_activity_setup4">Setup4Activity</string>
+    <string name="title_activity_base_setup">BaseSetupActivity</string>
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_atools">AToolsActivity</string>
+    <string name="title_activity_address">AddressActivity</string>
+</resources>

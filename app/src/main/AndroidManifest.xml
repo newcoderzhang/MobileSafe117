@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huilong.zhang.mobilesafe117" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.write_external_storage" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.receive_boot_completed" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.send_sms" />
+    <uses-permission android:name="android.permission.receive_sms" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name=".View.SetingActivity"
+            android:label="@string/title_activity_seting" >
+        </activity>
+        <activity
+            android:name=".View.LostFindActivity"
+            android:label="@string/title_activity_lost_find" >
+        </activity>
+        <activity
+            android:name=".View.Setup1Activity"
+            android:label="@string/title_activity_setup1" >
+        </activity>
+        <activity
+            android:name=".View.Setup2Activity"
+            android:label="@string/title_activity_setup2" >
+        </activity>
+        <activity
+            android:name=".View.Setup3Activity"
+            android:label="@string/title_activity_setup3" >
+        </activity>
+        <activity
+            android:name=".View.Setup4Activity"
+            android:label="@string/title_activity_setup4" >
+        </activity>
+        <activity
+            android:name=".View.BaseSetupActivity"
+            android:label="@string/title_activity_base_setup" >
+        </activity>
+
+        <receiver
+            android:name=".Receiver.BootCompleteReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.boot_completed" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".View.ContactActivity"
+            android:label="@string/title_activity_contact" >
+        </activity>
+
+        <receiver
+            android:name=".Receiver.SmsReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="com.huilong.zhang.mobilesafe117.palymp3" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Service.LocationService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".View.AToolsActivity"
+            android:label="@string/title_activity_atools" >
+        </activity>
+        <activity
+            android:name=".View.AddressActivity"
+            android:label="@string/title_activity_address" >
+        </activity>
+
+        <service
+            android:name=".Service.AddressService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+    </application>
+
+</manifest>
