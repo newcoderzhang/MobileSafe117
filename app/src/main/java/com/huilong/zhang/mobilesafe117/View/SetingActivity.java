@@ -1,6 +1,7 @@
 package com.huilong.zhang.mobilesafe117.View;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,8 @@ public class SetingActivity extends Activity {
     private static final String TAG = "SetingActivity";
     private SettingItmeView sivupdate;
     private SettingItmeView setingaddress;
+    private SettingClickView settingClickView;  //修改风格设置view
+    final String[] items = new String[] { "半透明", "活力橙", "卫士蓝", "金属灰", "苹果绿" };
     private SharedPreferences sharedPreferences;
 
 
@@ -53,6 +56,7 @@ public class SetingActivity extends Activity {
             }
         });
         initAddressView();
+        initSettingClick();
     }
 
     @Override
@@ -83,7 +87,7 @@ public class SetingActivity extends Activity {
      */
     private void initAddressView() {
         setingaddress = (SettingItmeView) findViewById(R.id.address);
-        boolean serviceRunning = ServicesStatusUtils.isServiceRunning(this,"com.huilong.zhang.mobilesafe117.Service.AddressService");
+        boolean serviceRunning = ServicesStatusUtils.isServiceRunning(this, "com.huilong.zhang.mobilesafe117.Service.AddressService");
         if(serviceRunning) {
             setingaddress.setcheckedone(true);
         }else {
@@ -106,5 +110,36 @@ public class SetingActivity extends Activity {
 
             }
         });
+    }
+    private void initSettingClick() {
+        settingClickView = (SettingClickView) findViewById(R.id.scv_address_style);
+        int style = sharedPreferences.getInt("address_style", 0);// 读取保存的style
+        settingClickView.setDesc(items[style]);
+
+        settingClickView.setTitle("归属地提示风格");
+        settingClickView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSingleChooseDIalog();
+            }
+        });
+    }
+
+    private void showSingleChooseDIalog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.mipmap.ic_launcher);
+        int style = sharedPreferences.getInt("address_style", 0);
+        builder.setSingleChoiceItems(items, style, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                sharedPreferences.edit().putInt("address_style", which).commit();// 保存选择的风格
+                dialog.dismiss();
+                settingClickView.setDesc(items[which]);
+            }
+        });
+        builder.setNegativeButton("取消",null);
+        builder.show();
+
+
     }
 }
