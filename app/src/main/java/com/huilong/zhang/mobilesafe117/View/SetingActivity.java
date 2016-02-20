@@ -22,6 +22,7 @@ public class SetingActivity extends Activity {
     private SettingItmeView sivupdate;
     private SettingItmeView setingaddress;
     private SettingClickView settingClickView;  //修改风格设置view
+    private SettingClickView settingdrag;  //拖动位置
     final String[] items = new String[] { "半透明", "活力橙", "卫士蓝", "金属灰", "苹果绿" };
     private SharedPreferences sharedPreferences;
 
@@ -57,6 +58,7 @@ public class SetingActivity extends Activity {
         });
         initAddressView();
         initSettingClick();
+        initDragg();
     }
 
     @Override
@@ -137,9 +139,22 @@ public class SetingActivity extends Activity {
                 settingClickView.setDesc(items[which]);
             }
         });
-        builder.setNegativeButton("取消",null);
+        builder.setNegativeButton("取消", null);
         builder.show();
+    }
 
+    private void initDragg() {
+        settingdrag = (SettingClickView) findViewById(R.id.sc_tuodong);
+        settingdrag.setTitle("拖动移动位置");
+        settingdrag.setDesc("点击移动位置");
+        settingdrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SetingActivity.this,DragViewActivity.class));
+                finish();
+            }
+        });
 
     }
+
 }

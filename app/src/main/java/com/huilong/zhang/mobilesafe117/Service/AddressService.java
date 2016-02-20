@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
@@ -23,6 +24,7 @@ public class AddressService extends Service {
     private WindowManager mWM;
     private View view;
     private OutCallReceiver receiverone;
+    private SharedPreferences sharedPreferences;
 
     public AddressService() {
     }
@@ -39,6 +41,7 @@ public class AddressService extends Service {
     public void onCreate() {
         super.onCreate();
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
         mylisten = new Mylisten();
         tm.listen(mylisten,PhoneStateListener.LISTEN_CALL_STATE);
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
@@ -105,8 +108,15 @@ public class AddressService extends Service {
 //                R.drawable.call_locate_gray, R.drawable.call_locate_green };
 //        int style = mPref.getInt("address_style", 0);
 //
-//        view.setBackgroundResource(bgs[style]);// 根据存储的样式更新背景
 //
+        int[] bgs = new int[] { R.mipmap.call_locate_white,
+                R.mipmap.call_locate_orange,
+                R.mipmap.call_locate_blue,
+                R.mipmap.call_locate_gray,
+                R.mipmap.call_locate_green };
+        int style = sharedPreferences.getInt("address_style",0);
+        view.setBackgroundResource(bgs[style]);// 根据存储的样式更新背景
+
         TextView tvText = (TextView) view.findViewById(R.id.tv_number);
         tvText.setText(text);
         mWM.addView(view, params);// 将view添加在屏幕上(Window)
