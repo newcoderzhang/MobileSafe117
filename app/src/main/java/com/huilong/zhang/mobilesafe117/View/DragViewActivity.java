@@ -48,6 +48,18 @@ public class DragViewActivity extends Activity {
 
         imageView.setLayoutParams(layoutParams);// 重新设置位置
 
+        final int winWidth = getWindowManager().getDefaultDisplay().getWidth();
+        final int winHeight = getWindowManager().getDefaultDisplay()
+                .getHeight();
+
+        if (lastY > winHeight / 2) {// 上边显示,下边隐藏
+            textViewtop.setVisibility(View.VISIBLE);
+            textViewbottom.setVisibility(View.INVISIBLE);
+        } else {
+            textViewtop.setVisibility(View.INVISIBLE);
+            textViewbottom.setVisibility(View.VISIBLE);
+        }
+
 
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -66,6 +78,22 @@ public class DragViewActivity extends Activity {
 
                         int t = imageView.getTop() + dy;
                         int b = imageView.getBottom() + dy;
+
+
+
+                        // 判断是否超出屏幕边界, 注意状态栏的高度
+                        if (l < 0 || r > winWidth || t < 0 || b > winHeight - 20) {
+                            break;
+                        }
+
+                        // 根据图片位置,决定提示框显示和隐藏
+                        if (t > winHeight / 2) {// 上边显示,下边隐藏
+                            textViewtop.setVisibility(View.VISIBLE);
+                            textViewbottom.setVisibility(View.INVISIBLE);
+                        } else {
+                            textViewtop.setVisibility(View.INVISIBLE);
+                            textViewbottom.setVisibility(View.VISIBLE);
+                        }
 
                         imageView.layout(l,t,r,b);
 
