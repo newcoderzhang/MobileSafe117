@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huilong.zhang.mobilesafe117.View.AToolsActivity;
+import com.huilong.zhang.mobilesafe117.View.CallSafeActivity;
 import com.huilong.zhang.mobilesafe117.View.LostFindActivity;
 import com.huilong.zhang.mobilesafe117.View.SetingActivity;
 import com.huilong.zhang.mobilesafe117.utils.MD5Utils;
@@ -70,6 +70,9 @@ public class HomeActivity extends Activity {
                     case 0:
                         Log.v(TAG, "选择1");
                         showPasswordDialog();
+                        break;
+                    case 1:
+                        startActivity(new Intent(HomeActivity.this, CallSafeActivity.class));
                         break;
                     case 8:
                         Log.v(TAG, "选择8");
