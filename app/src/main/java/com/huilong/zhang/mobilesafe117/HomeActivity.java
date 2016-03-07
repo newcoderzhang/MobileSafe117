@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huilong.zhang.mobilesafe117.View.AToolsActivity;
+import com.huilong.zhang.mobilesafe117.View.AppManagerActivity;
 import com.huilong.zhang.mobilesafe117.View.CallSafeActivity;
 import com.huilong.zhang.mobilesafe117.View.LostFindActivity;
 import com.huilong.zhang.mobilesafe117.View.SetingActivity;
@@ -73,6 +74,9 @@ public class HomeActivity extends Activity {
                         break;
                     case 1:
                         startActivity(new Intent(HomeActivity.this, CallSafeActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(HomeActivity.this, AppManagerActivity.class));
                         break;
                     case 8:
                         Log.v(TAG, "选择8");
