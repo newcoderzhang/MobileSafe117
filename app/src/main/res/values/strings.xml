@@ -16,4 +16,5 @@
     <string name="title_activity_address">AddressActivity</string>
     <string name="title_activity_drag_view">DragViewActivity</string>
     <string name="title_activity_call_safe">CallSafeActivity</string>
+    <string name="title_activity_app_manager">AppManagerActivity</string>
 </resources>

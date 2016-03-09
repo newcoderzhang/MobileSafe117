@@ -39,4 +39,11 @@
         android:id="@+id/sc_tuodong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <com.huilong.zhang.mobilesafe117.View.SettingItmeView
+        android:id="@+id/safe_viww"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        androidqian:titlezhang="黑名单更新设置"
+        androidqian:desc_on="黑名单关闭"
+        androidqian:desc_off="黑名单开启"/>
 </LinearLayout>

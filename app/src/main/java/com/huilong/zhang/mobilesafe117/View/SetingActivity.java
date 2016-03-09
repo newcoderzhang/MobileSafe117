@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +13,7 @@ import android.view.View;
 
 import com.huilong.zhang.mobilesafe117.R;
 import com.huilong.zhang.mobilesafe117.Service.AddressService;
+import com.huilong.zhang.mobilesafe117.Service.CallSafeService;
 import com.huilong.zhang.mobilesafe117.utils.ServicesStatusUtils;
 
 public class SetingActivity extends Activity {
@@ -23,6 +23,7 @@ public class SetingActivity extends Activity {
     private SettingItmeView setingaddress;
     private SettingClickView settingClickView;  //修改风格设置view
     private SettingClickView settingdrag;  //拖动位置
+    private SettingItmeView  setSafeDao;   //黑名单设置
     final String[] items = new String[] { "半透明", "活力橙", "卫士蓝", "金属灰", "苹果绿" };
     private SharedPreferences sharedPreferences;
 
@@ -59,7 +60,10 @@ public class SetingActivity extends Activity {
         initAddressView();
         initSettingClick();
         initDragg();
+        initSafeDao();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -150,11 +154,37 @@ public class SetingActivity extends Activity {
         settingdrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SetingActivity.this,DragViewActivity.class));
+                startActivity(new Intent(SetingActivity.this, DragViewActivity.class));
                 finish();
             }
         });
 
+    }
+    private void initSafeDao() {
+        setSafeDao = (SettingItmeView) findViewById(R.id.safe_viww);
+        boolean serviceRunning = ServicesStatusUtils.isServiceRunning(this, "com.huilong.zhang.mobilesafe117.Service.CallSafeService");
+        if(serviceRunning) {
+            setSafeDao.setcheckedone(true);
+        }else {
+            setSafeDao.setcheckedone(false);
+        }
+        setSafeDao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(setSafeDao.ischecked()) {
+                    Log.v(TAG, "setingaddress ischecked is fasle");
+                    setSafeDao.setcheckedone(false);
+                    stopService(new Intent(SetingActivity.this,AddressService.class));
+                    //sharedPreferences.edit().putBoolean("auto_update",false).commit();
+                }else{
+                    Log.v(TAG, "ischecked is " + setingaddress.ischecked());
+                    setSafeDao.setcheckedone(true);
+                    startService(new Intent(SetingActivity.this, CallSafeService.class));
+                    //sharedPreferences.edit().putBoolean("auto_update",true).commit();
+                }
+
+            }
+        });
     }
 
 }

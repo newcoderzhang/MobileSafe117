@@ -13,6 +13,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WIFI_STATE_CHANGED"></uses-permission>
+    <uses-permission android:name="android.launcher2.permission.READ_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
 
     <application
         android:allowBackup="true"
@@ -113,6 +119,17 @@
         <activity
             android:name=".View.CallSafeActivity"
             android:label="@string/title_activity_call_safe" >
+        </activity>
+
+        <service
+            android:name=".Service.CallSafeService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".View.AppManagerActivity"
+            android:label="@string/title_activity_app_manager" >
         </activity>
     </application>
 
